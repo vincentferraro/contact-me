@@ -3,16 +3,15 @@ import { Formik, Form, Field } from 'formik'
 function FormUser(){
 
     return(
-        <div>
+        <div className='w-3/6 h-4/6 border-solid border-2 border-black'>
             <Formik
             initialValues={{
-                firstName:'',
-                lastName:'',
+                userName:'',
                 email:'',
                 message:''}}
                 validate={values =>{
                     const errors = {};
-                    if(!values.email | !values.firstName | !values.lastName ){
+                    if(!values.email | !values.userName){
                         errors.email = 'Required';
                     }else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)){
                         errors.email = 'Invalid email address';
@@ -32,16 +31,16 @@ function FormUser(){
                         handleChange,
                         handleBlur
                     })=>(
-                        <Form>
-                        <label htmlFor='firstName'>First Name</label>
-                        <Field id="firstName" name="firstName" placeholder="Jane" onChange={handleChange}
+                        <Form  className="flex flex-col justify-center items-center border-2">
+                        {/* <label htmlFor='firstName'>First Name</label> */}
+                        <Field id="userName" name="userName" placeholder="USERNAME" onChange={handleChange}
              onBlur={handleBlur}
              value={values.email}/>
              {errors.email && touched.email && errors.email}
-                        <label htmlFor='lastName'>Last Name</label>
-                        <Field id="lastName" name="lastName" placeholder="Doe"/>
-                        <label htmlFor='email'>Email</label>
+                        {/* <label htmlFor='email'>Email</label> */}
                         <Field id="email" name="email" placeholder="email" type="email"/>
+                        <Field id="message" name="message" placeholder="Message" as="textarea"/>
+                        
                         <button type="submit">Submit</button>
                     </Form>
                     )

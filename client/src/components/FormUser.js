@@ -1,9 +1,11 @@
 import { Formik, Form, Field } from 'formik'
+import { TextField } from '@mui/material';
+import { Button } from '@mui/material';
 
 function FormUser(){
 
     return(
-        <div className='w-3/6 h-4/6 border-solid border-2 border-black'>
+        <div className='flex justify-center w-3/6 h-4/6 '>
             <Formik
             initialValues={{
                 userName:'',
@@ -31,17 +33,21 @@ function FormUser(){
                         handleChange,
                         handleBlur
                     })=>(
-                        <Form  className="flex flex-col justify-center items-center border-2">
-                        {/* <label htmlFor='firstName'>First Name</label> */}
-                        <Field id="userName" name="userName" placeholder="USERNAME" onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.email}/>
-             {errors.email && touched.email && errors.email}
-                        {/* <label htmlFor='email'>Email</label> */}
-                        <Field id="email" name="email" placeholder="email" type="email"/>
-                        <Field id="message" name="message" placeholder="Message" as="textarea"/>
+                        <Form  className="flex flex-col h-[100%] w-5/6 justify-center items-center ">
                         
-                        <button type="submit">Submit</button>
+                        <TextField id="userName" className="inline-block m-6 p-6 " name="userName" label="Username" margin="normal" onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.email}/>
+                        {errors.email && touched.email && errors.email}
+  
+                        <TextField  id="email" className="block m-6" name="email" label="Email" type="email" margin="normal"/>   
+             
+                        <TextField id="message" className="block m-6" name="message" label="Message" multiline fullWidth rows={6} minRows={4} maxRows={6} margin="normal" />
+
+                        
+                        <Button className="bg-slate-500" type="submit" variant="contained">Submit</Button>
+
+                        
                     </Form>
                     )
                        

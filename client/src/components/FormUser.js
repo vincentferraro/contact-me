@@ -22,16 +22,16 @@ function FormUser(){
                 email:'',
                 message:''}}
             validationSchema={validationSchema}
-            validate={values =>{
-                    const errors = {};
-                    if(!values.email | !values.username){
-                        errors.email = 'Required';
-                    }else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)){
-                        errors.email = 'Invalid email address';
-                    }
-                    console.log(errors)
-                    return errors;
-                }}
+            // validate={values =>{
+            //         const errors = {};
+            //         if(!values.email | !values.username){
+            //             errors.email = 'Required';
+            //         }else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)){
+            //             errors.email = 'Invalid email address';
+            //         }
+            //         console.log(errors)
+            //         return errors;
+            //     }}
             onSubmit={(values) => {
                console.log('Submitting...',values)
                   }}>
@@ -53,8 +53,8 @@ function FormUser(){
                                 onChange={props.handleChange}
                                 onBlur={props.handleBlur}
                                 value={props.values.message} />
-
-                        <Button className="bg-slate-500" type="submit" variant="contained">Submit</Button>
+                        {props.errors.username && <div id="feedback" className='text-red-500'>Please fill field in red</div>}
+                        <Button className="bg-slate-500" type="submit" variant="contained" margin="normal">Submit</Button>
 
                         
                     </Form>
